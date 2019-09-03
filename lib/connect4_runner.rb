@@ -1,6 +1,7 @@
 require_relative 'connect4.rb'
 
 class GameRunner
+    attr_reader :players
     def initialize(player1 = "A", player2 = "B")
         @board = Board.new
         @players = [player1, player2]
@@ -17,6 +18,10 @@ class GameRunner
             puts "Player #{@players[@activeplayer]} wins!" if @board.winner
             @activeplayer = (@activeplayer == 0 ? 1 : 0)
         end
+    end
+
+    def activeplayer
+        @players[@activeplayer]
     end
 
     def get_move
